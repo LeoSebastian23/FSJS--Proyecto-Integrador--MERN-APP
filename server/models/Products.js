@@ -9,11 +9,11 @@ const productSchema = new mongoose.Schema({
     },
     categoria:{
         type: String,
-        required: true
+        //required: true
     },
     imagen:{
-        url: String,
-        public_id : String
+        public_id : String,
+        url: String
     }, 
     descripcion:{
         type: String,
@@ -21,12 +21,16 @@ const productSchema = new mongoose.Schema({
     },
     precio:{
         type: Number,
-        required: true
+        //required: true
     }, 
     stock:{
         type: Number,
-        required: true
+        //required: true
     }
-})
+},{
+    timestamps:true,
+    versionKey: false
+} 
+)
 
 export default mongoose.model('Product',productSchema)

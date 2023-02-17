@@ -24,35 +24,36 @@ export const createProducts = async (req, res) => {
         const {
             titulo,
             categoria,
-            imagen,
             precio,
-            stock
+            stock,
+            descripcion,
         } = req.body;
 
-        let image;
+        let imagen = null;
 
-        if (req.files.image) {
+        if (req.files?.imagen) {
             const result = await uploadImage(
-                req.files.image.tempFilePath // solo necesito tempFilePath del objeto
+                req.files.imagen.tempFilePath // solo necesito tempFilePath del objeto
             )
-            image = { // Se guardan los datos que necesito dentro de esta variable
+            imagen = { // Se guardan los datos que necesito dentro de esta variable
                 url: result.secure_url,
                 public_id: result.public_id
             }
-            await fs.remove(req.files.image.tempFilePath) // elimina archivo, una vez subido a cloudinary
+            await fs.remove(req.files.imagen.tempFilePath) // elimina archivo, una vez subido a cloudinary
         }
 
         const newProduct = new Product({
             titulo,
             categoria,
-            imagen: image, // se guarda la url dentro de la coleccion mientras el archivo se sube a cloudinary
+            imagen, // se guarda la url dentro de la coleccion mientras el archivo se sube a cloudinary
             precio,
             stock,
-
+            descripcion,
         });
 
         await newProduct.save();
         return res.json(newProduct);
+        
     } catch (error) {
         return res.status(500).json({
             message: error.message,
@@ -67,7 +68,7 @@ export const updateProducts = async (req, res) => {
             new: true,
         }); //devuelve objeto actualizado
         console.log(producto);
-        return res.send("producto");
+        return res.send(producto);
     } catch (error) {
         return res.status(500).json({
             message: error.message,
