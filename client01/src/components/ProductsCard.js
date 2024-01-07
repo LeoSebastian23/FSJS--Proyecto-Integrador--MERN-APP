@@ -8,10 +8,11 @@ export function ProductsCard({ products }) {
   const handleDelete = (_id) => {
     toast(
       (t) => (
-        <div >
-          <p className="text-white">
-            Estas seguro que quieres eliminar ? <strong> {_id} </strong>{" "}
+        <div className="flex flex-col items-center justify-center">
+          <p className="text-white font-semibold text-xl m-4">
+            Estas seguro que quieres eliminar la publicación? {" "}
           </p>{" "}
+          {/* <strong> {_id} </strong> */}
           <div>
             <button
               className="bg-red-500 hover:bg-red-400 px-3 py-2 text-white rounded-sm mx-2"
@@ -39,11 +40,7 @@ export function ProductsCard({ products }) {
     );
   };
   return (
-    // <div
-    //   className="bg-zinc-800 text-white rounded-sm shadow-md shadow-black
-    // hover:bg-zinc-600 hover:cursor-pointer m-8"
-    //   onClick={() => navigate(`/products/${products._id}`)}
-    // >
+
     <div className="px-4 py-7 my-10 bg-zinc-700 flex justify-center text-white rounded-sm shadow-md shadow-black hover:bg-zinc-500 hover:cursor-pointer m-8"
        onClick={() => navigate(`/products/${products._id}`)}>
       <div className="cardIMG">
@@ -65,15 +62,6 @@ export function ProductsCard({ products }) {
                   </button>
         </div>{" "}
       </div>
-      {/* <div className="flex justify-between content-center items-center">
-                  <h3>{products.titulo}</h3>
-                  
-                </div>
-                <h3 className="font-bold">{products.categoria}</h3>
-                <p>{products.descripcion}</p>
-                {products.imagen && <img src={products.imagen.url} className=" h-60"/>}
-                <p>${products.precio}</p> */}{" "}
-      {/* </div> */}{" "}
     </div>
   );
 }

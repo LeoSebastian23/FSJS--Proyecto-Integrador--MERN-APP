@@ -31,11 +31,11 @@ export function Catalogo() {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6 shadow-black">
-        <header className="flex justify-between items-center py-4 text-white">
-          <h3 className="text-2xl font-bold text-gray-200 mb-4">
+        <header className="flex justify-between items-center  py-4 text-white">
+          <h3 className="text-3xl font-bold text-gray-200 mb-4">
             Nueva Publicación
           </h3>
-          <Link to="/" className="text-gray-400 text-md hover:text-gray-300">
+          <Link to="/" className="text-gray-400 text-md font-bold hover:text-gray-100">
             {" "}
             Volver
           </Link>
