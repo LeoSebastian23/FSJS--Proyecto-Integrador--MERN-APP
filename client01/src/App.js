@@ -4,8 +4,8 @@ import { ProductsProvider } from './context/productsContext'
 import {Toaster} from "react-hot-toast";
 function App() {
   return (
-    <div className="bg-neutral-700 min-h-screen flex item-center">
-      <div className="px-10 container m-auto">
+    <div className="bg-neutral-900 min-h-screen flex item-center">
+      <div className="px-10 my-6 container m-auto">
         <ProductsProvider >
           <Routes>
             <Route path="/" element={<Home />} />{" "}
