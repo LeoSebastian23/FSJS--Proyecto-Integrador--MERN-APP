@@ -1,6 +1,7 @@
 import { useProducts } from "../context/productsContext";
 import { Link } from "react-router-dom";
 import { ProductsCard } from "../components/ProductsCard";
+import { VscEmptyWindow } from "react-icons/vsc";
 
 export function Home() {
   const { release } = useProducts();
@@ -9,6 +10,7 @@ export function Home() {
     if (release.lenght === 0)
       return (
         <div className="flex flex-col justyfy-center items-center">
+          <VscEmptyWindow className="w-48 h-48 text-white" />
           <h1 className="font-semibold text-2xl text-white">
             No hay publicaciones aun
           </h1>

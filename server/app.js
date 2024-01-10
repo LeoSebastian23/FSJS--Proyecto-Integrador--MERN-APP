@@ -19,7 +19,7 @@ app.use(fileUpload({
 
 // routes
 app.use(productsRoutes)
-console.log(__dirname) 
+// console.log(__dirname) 
 app.use(express.static(path.join(__dirname, '../client01/build')));
 
 export default app
