@@ -41,7 +41,7 @@ export function ProductsCard({ products }) {
   };
   return (
 
-    <div className="px-4 py-7 my-10 bg-zinc-700 flex justify-center text-white rounded-sm shadow-md shadow-black hover:bg-zinc-500 hover:cursor-pointer m-8"
+    <div className="px-4 py-7 my-10 bg-zinc-700 flex justify-center text-white font-light rounded-sm shadow-md shadow-black hover:bg-zinc-500 hover:cursor-pointer m-8"
        onClick={() => navigate(`/products/${products._id}`)}>
       <div className="cardIMG">
         {" "}

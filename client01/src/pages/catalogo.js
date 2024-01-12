@@ -33,10 +33,10 @@ export function Catalogo() {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6 shadow-black">
         <header className="flex justify-between items-center  py-4 text-white">
-          <h3 className="text-3xl font-bold text-gray-200 mb-4">
+          <h3 className="text-3xl font-light text-gray-200 mb-4">
             Publicación
           </h3>
-          <Link to="/" className="text-gray-400 text-md font-bold hover:text-gray-100">
+          <Link to="/" className="text-gray-400 text-md font-light hover:text-gray-100">
             {" "}
             Volver
           </Link>
@@ -127,7 +127,7 @@ export function Catalogo() {
                     </g>
                   </svg>
                 </div>
-                <div className="text">
+                <div className="text ">
                   <span>Click to upload imagen</span>
                   <input
                     id="file"
@@ -139,7 +139,7 @@ export function Catalogo() {
               </label>
               <button
                 type="submit"
-                className="bg-gradient-to-r from-green-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-green-600 hover:to-blue-600 transition ease-in-out duration-150"
+                className="bg-gradient-to-r from-green-500 to-blue-500 text-white font-light py-2 px-4 rounded-md mt-4 hover:bg-green-600 hover:to-blue-600 transition ease-in-out duration-150"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
