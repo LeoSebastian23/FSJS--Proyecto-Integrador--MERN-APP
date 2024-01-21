@@ -9,17 +9,20 @@ import { fileURLToPath } from 'url';
 const app = express()
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// middlewares
-app.use(express.json())
-app.use(fileUpload({
+app.use(morgan("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(
+  fileUpload({
+    tempFileDir: "./upload",
     useTempFiles: true,
-    tempFileDir: './upload'
-}))
+  })
+);
 
-
-// routes
-app.use(productsRoutes)
-// console.log(__dirname) 
 app.use(express.static(path.join(__dirname, '../client01/build')));
 
-export default app
+// Routes
+app.use("/api", productsRoutes); 
+
+export { app };
