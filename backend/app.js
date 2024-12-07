@@ -20,10 +20,10 @@ app.use(fileUpload({
 // routes
 app.use(productsRoutes)
 // console.log(__dirname) 
-app.use(express.static(path.join(__dirname, '../client01/build')));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 app.get('*',(req,res)=> {
-    res.sendFile(join(__dirname,'..client01/build/index.html'))
+    res.sendFile(join(__dirname,'..frontend/build/index.html'))
 })
 
 export default app
