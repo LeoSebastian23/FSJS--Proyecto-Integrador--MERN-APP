@@ -21,13 +21,13 @@ app.use(
 // Routes
 app.use(productsRoutes);
 
-// Servir archivos estáticos del frontend
-app.use(express.static(join(__dirname, '../frontend/build')));
 
-// Manejar rutas desconocidas para aplicaciones SPA (Single Page Application)
-app.get('*', (req, res) => {
-  res.sendFile(join(__dirname, '../frontend/build/index.html')); // Ruta corregida
-});
+// app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+// app.get('*', (req, res) => {
+//     res.sendFile(join(__dirname, '../frontend/build/index.html'));
+// });
+
 
 export default app;
 
