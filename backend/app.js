@@ -1,5 +1,6 @@
 // Configuracion de Express
 import express from 'express';
+import cors from 'cors';
 import fileUpload from 'express-fileupload';
 import productsRoutes from './routes/products.routes.js';
 import path, { join } from 'path'; // Importar 'join' desde 'path'
@@ -8,6 +9,13 @@ import { fileURLToPath } from 'url';
 
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Cors
+app.use(cors({
+  origin: 'https://fsjs-mern-app-auy0.onrender.com',  // Reemplaza con la URL de tu frontend en producción
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+}));
 
 // Middlewares
 app.use(express.json());
