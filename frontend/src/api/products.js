@@ -1,3 +1,4 @@
+import axios from 'axios';
 const BACKEND_URL = 'https://backend-mern-app-0kdp.onrender.com'; // Dirección de tu backend en producción
 
 export const getProductsRequests =  async() => await axios.get(`${BACKEND_URL}/products`)
