@@ -9,10 +9,16 @@ export function Home() {
   const { release, fetchProducts } = useProducts(); // Asegúrate de tener una función fetchProducts en el context para cargar datos
   const [loading, setLoading] = useState(true);
 
+  
   useEffect(() => {
     const loadData = async () => {
-      await fetchProducts(); // Carga los datos
-      setLoading(false); // Cambia el estado de loading una vez los datos se han cargado
+      try {
+        await fetchProducts(); // Carga los datos
+      } catch (error) {
+        console.error("Error al cargar productos:", error);
+      } finally {
+        setLoading(false); // Cambia el estado de loading una vez los datos se han cargado o si ocurre un error
+      }
     };
     
     loadData();
