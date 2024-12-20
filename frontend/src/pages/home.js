@@ -6,18 +6,17 @@ import { VscEmptyWindow } from "react-icons/vsc";
 import { RingLoader } from "react-spinners"; // Loader importado de react-spinners
 
 export function Home() {
-  const { release, fetchProducts } = useProducts(); // Asegúrate de tener una función fetchProducts en el context para cargar datos
+  const { release, fetchProducts } = useProducts();
   const [loading, setLoading] = useState(true);
 
-  
   useEffect(() => {
     const loadData = async () => {
       try {
-        await fetchProducts(); // Carga los datos
+        await fetchProducts(); // Carga los productos
       } catch (error) {
         console.error("Error al cargar productos:", error);
       } finally {
-        setLoading(false); // Cambia el estado de loading una vez los datos se han cargado o si ocurre un error
+        setLoading(false); // Cambia el estado de loading a false después de que los productos hayan sido cargados
       }
     };
     
@@ -26,9 +25,10 @@ export function Home() {
 
   const render = () => {
     if (loading) {
+      // Se muestra el loader mientras los productos se están cargando
       return (
         <div className="flex flex-col justify-center items-center mt-4">
-          <RingLoader size={50} color="#FBBF24" /> {/* Loader con color amber */}
+          <RingLoader size={50} color="#FBBF24" />
           <h1 className="font-semibold text-2xl text-white mt-4">
             Cargando imágenes...
           </h1>
@@ -37,6 +37,7 @@ export function Home() {
     }
 
     if (release.length === 0) {
+      // Se muestra cuando los productos están cargados pero no hay datos
       return (
         <div className="flex flex-col justify-center items-center">
           <VscEmptyWindow className="w-48 h-48 text-white" />
@@ -47,6 +48,7 @@ export function Home() {
       );
     }
 
+    // Se muestran las tarjetas de productos cuando hay datos
     return (
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
         {release.map((product) => (
@@ -75,4 +77,5 @@ export function Home() {
     </div>
   );
 }
+
 
