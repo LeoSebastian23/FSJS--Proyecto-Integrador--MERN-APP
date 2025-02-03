@@ -12,7 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Cors
 app.use(cors({
-  origin: 'https://fsjs-mern-app-auy0.onrender.com',  // Reemplaza con la URL de tu frontend en producción
+  origin: ['https://fsjs-mern-app-auy0.onrender.com', 'http://localhost:3000'],  // Reemplaza con la URL de tu frontend en producción
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 }));
