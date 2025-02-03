@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { useProducts } from "../context/productsContext";
 import { Link } from "react-router-dom";
 import { ProductsCard } from "../components/ProductsCard";
-import { VscEmptyWindow } from "react-icons/vsc";
-import { RingLoader } from "react-spinners"; // Loader importado de react-spinners
+//import { VscEmptyWindow } from "react-icons/vsc";
+import { MoonLoader } from "react-spinners"; // Loader importado de react-spinners
 
 export function Home() {
-  const { release, fetchProducts } = useProducts();
+  const { release, getProducts } = useProducts();
   const [loading, setLoading] = useState(true);
   const [slowLoading, setSlowLoading] = useState(false);
 
@@ -16,7 +16,7 @@ export function Home() {
         // Si pasan más de 3 segundos, mostrar el mensaje de espera
         const timeout = setTimeout(() => setSlowLoading(true), 3000);
 
-        await fetchProducts();
+        await getProducts();
         clearTimeout(timeout);
       } catch (error) {
         console.error("Error al cargar productos:", error);
@@ -27,13 +27,13 @@ export function Home() {
     };
 
     loadData();
-  }, [fetchProducts]);
+  }, [getProducts]);
 
   const render = () => {
     if (loading) {
       return (
         <div className="flex flex-col justify-center items-center mt-4">
-          <RingLoader size={50} color="#FBBF24" />
+          <MoonLoader size={50} color="#FBBF24" />
           <h1 className="font-semibold text-2xl text-white mt-4">
             Cargando imágenes...
           </h1>
@@ -49,12 +49,17 @@ export function Home() {
     // Ahora solo mostramos "No hay publicaciones aún" si la carga ya terminó
     if (!loading && release.length === 0) {
       return (
-        <div className="flex flex-col justify-center items-center">
-          <VscEmptyWindow className="w-48 h-48 text-white" />
-          <h1 className="font-semibold text-2xl text-white">
-            No hay publicaciones aún
-          </h1>
-        </div>
+        <div className="flex flex-col justify-center items-center mt-4">
+        <MoonLoader size={50} color="#FBBF24" />
+        <h1 className="font-semibold text-2xl text-white mt-4">
+          Cargando imágenes...
+        </h1>
+        {slowLoading && (
+          <p className="text-gray-300 mt-2 text-sm">
+            Esperando conexión con el servidor... Puede tardar un momento.
+          </p>
+        )}
+      </div>
       );
     }
 
