@@ -17,12 +17,12 @@ export function Home() {
         const timeout = setTimeout(() => setSlowLoading(true), 3000);
 
         await fetchProducts();
-        clearTimeout(timeout); // Si se cargan antes, cancelar el mensaje
+        clearTimeout(timeout);
       } catch (error) {
         console.error("Error al cargar productos:", error);
       } finally {
         setLoading(false);
-        setSlowLoading(false); // Asegurar que no quede activo el mensaje
+        setSlowLoading(false);
       }
     };
 
@@ -46,7 +46,8 @@ export function Home() {
       );
     }
 
-    if (release.length === 0) {
+    // Ahora solo mostramos "No hay publicaciones aún" si la carga ya terminó
+    if (!loading && release.length === 0) {
       return (
         <div className="flex flex-col justify-center items-center">
           <VscEmptyWindow className="w-48 h-48 text-white" />
